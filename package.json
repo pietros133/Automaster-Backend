@@ -1,0 +1,17 @@
+{
+  "name": "automaster",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento automotivo",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "sequelize": "^6.37.7"
+  }
+}
