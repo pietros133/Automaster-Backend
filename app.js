@@ -4,10 +4,11 @@ import Cliente from "./src/models/cliente.js";
 import Veiculo from "./src/models/veiculo.js";
 import Usuario from "./src/models/usuario.js";
 import Agendamento from "./src/models/agendamento.js";
+import Router from "./src/routes/usuarioRoutes.js";
 const app = express();
 
 app.use(express.json());
-
+app.use(Router);
 sequelize
   .authenticate()
   .then(() => {

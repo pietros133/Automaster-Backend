@@ -44,6 +44,10 @@ const Agendamento = sequelize.define(
       allowNull: false,
       defaultValue: "agendado",
     },
+    preco: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
   },
   {
     tableName: "agendamento",
