@@ -69,14 +69,15 @@ export const UserController = {
       return res.status(500).json({ message: "Erro ao realizar login" });
     }
   },
-  async atualizarSenha(req, res) {
-    try {
-      const { email, senhaAntiga, novaSenha } = req.body;
 
-      if (!email || !senhaAntiga || !novaSenha) {
+  async recuperarSenha(req, res) {
+    try {
+      const { email, novaSenha } = req.body;
+
+      if (!email || !novaSenha) {
         return res.status(400).json({
           success: false,
-          message: "Preencha todos os dados obrigatórios!",
+          message: "Informe o e-mail e a nova senha!",
         });
       }
 
@@ -88,26 +89,18 @@ export const UserController = {
         });
       }
 
-      const isValid = await bcrypt.compare(senhaAntiga, usuario.senha);
-      if (!isValid) {
-        return res.status(400).json({
-          success: false,
-          message: "Senha antiga incorreta!",
-        });
-      }
-
-      const isSamePassword = await bcrypt.compare(novaSenha, usuario.senha);
-      if (isSamePassword) {
-        return res.status(400).json({
-          success: false,
-          message: "A nova senha não pode ser igual à anterior!",
-        });
-      }
-
       if (novaSenha.length < 6) {
         return res.status(400).json({
           success: false,
           message: "A nova senha deve ter no mínimo 6 caracteres!",
+        });
+      }
+
+      const isSame = await bcrypt.compare(novaSenha, usuario.senha);
+      if (isSame) {
+        return res.status(400).json({
+          success: false,
+          message: "A nova senha não pode ser igual à anterior!",
         });
       }
 
@@ -117,13 +110,13 @@ export const UserController = {
 
       return res.status(200).json({
         success: true,
-        message: "Senha atualizada com sucesso!",
+        message: "Senha redefinida com sucesso!",
       });
     } catch (err) {
-      console.error("Erro ao atualizar senha:", err);
+      console.error("Erro ao redefinir senha:", err);
       return res.status(500).json({
         success: false,
-        message: "Erro interno ao atualizar a senha!",
+        message: "Erro interno ao redefinir a senha!",
       });
     }
   },

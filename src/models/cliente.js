@@ -20,7 +20,7 @@ const Cliente = sequelize.define(
       unique: true,
     },
     telefone: {
-      type: DataTypes.STRING(9),
+      type: DataTypes.STRING(20),
       allowNull: false,
     },
   },

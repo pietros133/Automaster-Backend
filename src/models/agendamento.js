@@ -31,11 +31,15 @@ const Agendamento = sequelize.define(
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     },
-    dataAgendamento: {
+    data: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    observacoes: {
+    hora: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+    descricao: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
@@ -46,7 +50,7 @@ const Agendamento = sequelize.define(
     },
     preco: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
