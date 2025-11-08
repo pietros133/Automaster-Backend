@@ -72,7 +72,7 @@ export const clienteController = {
       if (!nome || !telefone) {
         return res
           .status(400)
-          .json({ message: "Informe o nome e o novo telefone!" });
+          .json({ message: "Informe o nome e novo telefone!" });
       }
 
       const cliente = await Cliente.findOne({ where: { nome } });

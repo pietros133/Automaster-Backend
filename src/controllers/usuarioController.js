@@ -4,9 +4,9 @@ import bcrypt from "bcrypt";
 export const UserController = {
   async create(req, res) {
     try {
-      const { nome, email, senha } = req.body;
+      const { email, senha } = req.body;
 
-      if (!nome || !senha || !email) {
+      if (!email || !senha) {
         return res
           .status(400)
           .json({ message: "Todos os campos devem ser preenchidos!" });
@@ -21,7 +21,6 @@ export const UserController = {
       const hashedPassword = await bcrypt.hash(senha, 10);
 
       const user = await Usuario.create({
-        nome,
         email,
         senha: hashedPassword,
       });
