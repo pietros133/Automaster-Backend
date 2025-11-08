@@ -1,6 +1,6 @@
 # Automaster API
 
-API do sistema Automaster. Documentação completa para integração com o front-end React.
+API do sistema Automaster. Documentação para integração com o front-end React.
 
 ---
 
@@ -8,9 +8,11 @@ API do sistema Automaster. Documentação completa para integração com o front
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
-| POST | `clientes/cadastrarCliente` | Cadastra um novo cliente | `{ "nome": "Pietro", "telefone": "99999999", "email": "pietro@mail.com" }` | `{ "success": true, "id": 1 }` |
-| POST | `clientes/atualizarCliente` | Atualiza dados de um cliente existente | `{ "id": 1, "nome": "Pietro Miranda", "telefone": "99999999" }` | `{ "success": true }` |
-| GET | `clientes/buscarCliente` | Lista todos os clientes | — | `[ { "id": 1, "nome": "Pietro", "telefone": "99999999" } ]` |
+| POST | `/clientes/cadastrarCliente` | Cadastra um novo cliente | `{ "nome": "Pietro", "cpf": "12345678901", "telefone": "99999999" }` | `{ "message": "Cliente cadastrado com sucesso!" }` |
+| POST | `/clientes/atualizarCliente` | Atualiza telefone de um cliente existente (busca pelo nome) | `{ "nome": "Pietro", "telefone": "999999999" }` | `{ "message": "Telefone atualizado com sucesso!", "cliente": { "nome": "Pietro", "cpf": "12345678901", "telefone": "999999999" } }` |
+| GET | `/clientes/buscarCliente` | Busca um cliente pelo nome (informe no body) | `{ "nome": "Pietro" }` | `{ "message": "Cliente encontrado com sucesso!", "cliente": { "id": 1, "nome": "Pietro", "cpf": "12345678901", "telefone": "99999999" } }` |
+
+> ⚠️ Não existe rota que lista todos os clientes; a busca é **por nome**.
 
 ---
 
@@ -18,7 +20,9 @@ API do sistema Automaster. Documentação completa para integração com o front
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
-| POST | `veiculos/cadastrarVeiculo` | Cadastra um veículo ligado a um cliente | `{ "placa": "abcd122", "modelo": "Fiat Uno", "cor": "Preto", "nomeCliente": "Lucas Braga" }` | `{ "success": true, "id": 1 }` |
+| POST | `/veiculos/cadastrarVeiculo` | Cadastra um veículo vinculado a um cliente | `{ "placa": "ABC1234", "modelo": "Fiat Uno", "cor": "Preto", "nomeCliente": "Pietro" }` | `{ "message": "Veículo cadastrado com sucesso!", "veiculo": { "placa": "ABC1234", "modelo": "Fiat Uno", "cor": "Preto", "cliente": "Pietro" } }` |
+
+> ⚠️ Busca o cliente pelo **nome**, não pelo `id`.
 
 ---
 
@@ -26,8 +30,8 @@ API do sistema Automaster. Documentação completa para integração com o front
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
-| POST | `agendamentos/cadastrar` | Cadastra um novo agendamento | `{ "placa": "1234567","data": "2025-11-08", "hora": "09:30","descricao": "troca de oleo","preco": "2300"}` | `{ "success": true, "id": 1 }` |
-| GET | `agendamentos/buscar` | Lista todos os agendamentos | — | `[ { "id": 1, "clienteId": 1, "veiculoId": 1, "data": "2025-11-08", "servico": "Troca de óleo" } ]` |
+| POST | `/agendamentos/cadastrar` | Cadastra um novo agendamento | `{ "placa": "ABC1234", "data": "2025-11-08", "hora": "09:30", "descricao": "Troca de óleo", "preco": "2300" }` | `{ "message": "Agendamento criado com sucesso!", "agendamento": { "id": 1, "nomeCliente": "Pietro", "modelo": "Fiat Uno", "placa": "ABC1234", "cor": "Preto", "data": "2025-11-08", "hora": "09:30", "descricao": "Troca de óleo", "preco": "2300", "status": "pendente" } }` |
+| GET | `/agendamentos/buscar` | Lista todos os agendamentos | — | `[ { "id": 1, "nomeCliente": "Pietro", "telefone": "99999999", "modelo": "Fiat Uno", "placa": "ABC1234", "cor": "Preto", "data": "2025-11-08", "hora": "09:30", "descricao": "Troca de óleo", "preco": "2300", "status": "pendente" } ]` |
 
 ---
 
@@ -35,9 +39,9 @@ API do sistema Automaster. Documentação completa para integração com o front
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
-| POST | `usuarios/usuarios` | Cadastra um novo usuário | `{ "nome": "Admin", "email": "admin@mail.com", "senha": "123456" }` | `{ "success": true, "id": 1 }` |
-| POST | `usuarios/login` | Login de usuário | `{ "email": "admin@mail.com", "senha": "123456" }` | `{ "success": true, "token": "abc123" }` |
-| POST | `usuarios/recuperarsenha` | Recupera senha do usuário | `{ "email": "admin@mail.com" , "novaSenha": "pipi9090" }` | `{ "success": true, "message": "Email de recuperação enviado" }` |
+| POST | `/usuarios/usuarios` | Cadastra um novo usuário | `{ "nome": "Admin", "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Usuário cadastrado com sucesso!", "user": { "id": 1, "nome": "Admin", "email": "admin@mail.com" } }` |
+| POST | `/usuarios/login` | Login de usuário | `{ "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Login realizado com sucesso!", "user": { "id": 1, "nome": "Admin", "email": "admin@mail.com" } }` |
+| POST | `/usuarios/recuperarsenha` | Redefine a senha do usuário | `{ "email": "admin@mail.com", "novaSenha": "nova1234" }` | `{ "success": true, "message": "Senha redefinida com sucesso!" }` |
 
 ---
 
@@ -45,10 +49,6 @@ API do sistema Automaster. Documentação completa para integração com o front
 
 - Todas as rotas esperam que o back-end esteja rodando na **mesma URL configurada no front-end**.  
 - Para rotas **POST**, enviar o corpo em **JSON**.  
-- Para rotas que usam `id` ou `clienteId`, substituir pelo número do registro real.  
-- Em caso de erro, o back-end retorna:
-```json
-{
-  "success": false,
-  "message": "Registro não encontrado"
-}
+- Campos obrigatórios devem ser preenchidos, ou a API retornará **status 400** com mensagem de erro.  
+- Em caso de erro ou registro não encontrado, a API retorna **status 404** ou **500** com JSON de erro.  
+- Algumas rotas buscam registros pelo **nome** em vez de `id` (clientes e veículos).  
