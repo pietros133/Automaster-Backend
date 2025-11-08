@@ -64,8 +64,8 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
-| POST | `/usuarios/usuarios` | Cadastra um novo usuário | `{ "nome": "Admin", "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Usuário cadastrado com sucesso!", "user": { "id": 1, "nome": "Admin", "email": "admin@mail.com" } }` |
-| POST | `/usuarios/login` | Login de usuário | `{ "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Login realizado com sucesso!", "user": { "id": 1, "nome": "Admin", "email": "admin@mail.com" } }` |
+| POST | `/usuarios/usuarios` | Cadastra um novo usuário | `{ "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Usuário cadastrado com sucesso!", "user": { "id": 1,"email": "admin@mail.com" } }` |
+| POST | `/usuarios/login` | Login de usuário | `{ "email": "admin@mail.com", "senha": "123456" }` | `{ "message": "Login realizado com sucesso!", "user": { "id": 1,"email": "admin@mail.com" } }` |
 | POST | `/usuarios/recuperarsenha` | Redefine a senha do usuário | `{ "email": "admin@mail.com", "novaSenha": "nova1234" }` | `{ "success": true, "message": "Senha redefinida com sucesso!" }` |
 
 ---
