@@ -12,10 +12,8 @@ import agendamentoRoutes from "./src/routes/agendamentoRoutes.js";
 
 const app = express();
 
-// Permitir acesso do Live Server (porta diferente)
 app.use(cors());
 
-// Interpretar JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
