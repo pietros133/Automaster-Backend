@@ -37,7 +37,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 | POST | `/clientes/atualizarCliente` | Atualiza telefone de um cliente existente (busca pelo nome) | `{ "nome": "Pietro", "telefone": "999999999" }` | `{ "message": "Telefone atualizado com sucesso!", "cliente": { "nome": "Pietro", "cpf": "12345678901", "telefone": "999999999" } }` |
 | GET | `/clientes/buscarCliente` | Busca um cliente pelo nome (informe no body) | `{ "nome": "Pietro" }` | `{ "message": "Cliente encontrado com sucesso!", "cliente": { "id": 1, "nome": "Pietro", "cpf": "12345678901", "telefone": "99999999" } }` |
 
-> ⚠️ Não existe rota que lista todos os clientes; a busca é **por nome**.
+
 
 ---
 
@@ -47,7 +47,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 |--------|------|-----------|------|----------|
 | POST | `/veiculos/cadastrarVeiculo` | Cadastra um veículo vinculado a um cliente | `{ "placa": "ABC1234", "modelo": "Fiat Uno", "cor": "Preto", "nomeCliente": "Pietro" }` | `{ "message": "Veículo cadastrado com sucesso!", "veiculo": { "placa": "ABC1234", "modelo": "Fiat Uno", "cor": "Preto", "cliente": "Pietro" } }` |
 
-> ⚠️ Busca o cliente pelo **nome**, não pelo `id`.
+
 
 ---
 
