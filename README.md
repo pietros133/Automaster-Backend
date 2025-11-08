@@ -3,7 +3,30 @@
 API do sistema Automaster. Documentação para integração com o front-end React.
 
 ---
+## Estrutura de Pastas
+.
+└── Automaster/
+    ├── src/
+    │   ├── config/
+    │   │   └── .db.js
+    │   ├── models/
+    │   │   ├── agendamento.js
+    │   │   ├── cliente.js
+    │   │   ├── usuario.js
+    │   │   └── veiculo.js
+    │   ├── routes/
+    │   │   ├── agendamentoRoutes.js
+    │   │   ├── clienteRoutes.js
+    │   │   ├── usuarioRoutes.js
+    │   │   └── veiculoRoutes.js
+    │   └── controllers/
+    │       ├── agendamentoController.js
+    │       ├── clienteController.js
+    │       ├── usuarioController.js
+    │       └── veiculoController.js
+    └── app.js
 
+    
 ## 🔹 Clientes
 
 | Método | Rota | Descrição | Body | Response |
