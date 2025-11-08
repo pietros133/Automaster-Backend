@@ -27,7 +27,8 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
     │       ├── usuarioController.js
     │       └── veiculoController.js
     └── app.js
-``
+```
+
 ## 🔹 Clientes
 
 | Método | Rota | Descrição | Body | Response |
