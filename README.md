@@ -29,7 +29,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
     └── app.js
 ```
 
-## 🔹 Clientes
+## Clientes
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
@@ -41,7 +41,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 
 ---
 
-## 🔹 Veículos
+## Veículos
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
@@ -51,7 +51,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 
 ---
 
-## 🔹 Agendamentos
+## Agendamentos
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
@@ -60,7 +60,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 
 ---
 
-## 🔹 Usuários / Login
+## Usuários / Login
 
 | Método | Rota | Descrição | Body | Response |
 |--------|------|-----------|------|----------|
@@ -70,7 +70,7 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 
 ---
 
-## 🔹 Observações Gerais
+## Observações Gerais
 
 - Todas as rotas esperam que o back-end esteja rodando na **mesma URL configurada no front-end**.  
 - Para rotas **POST**, enviar o corpo em **JSON**.  
