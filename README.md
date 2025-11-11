@@ -69,6 +69,9 @@ API do sistema Automaster. Documentação para integração com o front-end Reac
 | POST | `/usuarios/recuperarsenha` | Redefine a senha do usuário | `{ "email": "admin@mail.com", "novaSenha": "nova1234" }` | `{ "success": true, "message": "Senha redefinida com sucesso!" }` |
 
 ---
+## DER - Diagrama de Entidade e Relacionamento
+![DER](./img/der.png)
+
 
 ## Observações Gerais
 
